@@ -1,5 +1,7 @@
 package guerra.shoppinglist
 
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -31,6 +33,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 
 data class ShoppingItem(
@@ -46,6 +49,8 @@ fun ShoppingList() {
     var showDialog by remember { mutableStateOf(false) }
     var itemName by remember { mutableStateOf("") }
     var itemQuantity by remember { mutableStateOf("1") }
+
+    val context = LocalContext.current
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -82,9 +87,11 @@ fun ShoppingList() {
                         item = item,
                         onEditClick = {
                             itemsList = itemsList.map { it.copy(isEditing = it.id == item.id) }
+                            showToast("Item Edited", context )
                         },
                         onDeleteClick = {
                             itemsList -= item
+                            showToast("Item Deleted", context )
                         })
                 }
             }
@@ -114,6 +121,8 @@ fun ShoppingList() {
                             showDialog = false
                             itemName = ""
                             itemQuantity = "1"
+
+                            showToast("Item Added", context)
                         }
 
                     }) { Text("Add") }
@@ -212,4 +221,8 @@ fun ShoppingItemEditor(
             }
         }
     }
+}
+
+fun showToast(message: String, context: Context){
+    Toast.makeText(context, message, Toast.LENGTH_LONG).show()
 }

@@ -41,6 +41,28 @@ android {
 
 dependencies {
 
+//      Source implementations
+//    implementation("com.google.maps.android:maps-compose")
+//    implementation("com.google.android.gms:play-services-maps:18.1.0")
+//    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
+//    implementation("com.squareup.retrofit2:retrofit")
+//    implementation("com.squareup.retrofit2:converter-gson")
+//    implementation("androidx.navigation:navigation-compose")
+
+    //Maps Services
+    implementation(libs.maps.compose)
+    implementation(libs.play.services.maps)
+
+    //ViewModel
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    //Retrofit and Gson Parser
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    //Navigation on Compose
+    implementation(libs.androidx.navigation.compose)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
