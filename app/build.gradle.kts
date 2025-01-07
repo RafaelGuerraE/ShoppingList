@@ -51,6 +51,7 @@ dependencies {
 
     //Maps Services
     implementation(libs.maps.compose)
+    implementation(libs.android.maps.compose)
     implementation(libs.play.services.maps)
 
     //ViewModel
