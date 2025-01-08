@@ -54,6 +54,9 @@ dependencies {
     implementation(libs.android.maps.compose)
     implementation(libs.play.services.maps)
 
+
+    implementation(libs.play.services.location)
+
     //ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 
@@ -63,6 +66,8 @@ dependencies {
 
     //Navigation on Compose
     implementation(libs.androidx.navigation.compose)
+
+    implementation(libs.androidx.navigation.runtime.ktx)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
