@@ -1,5 +1,6 @@
 package guerra.shoppinglist
 
+import android.Manifest
 import android.content.Context
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -38,10 +39,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModel
-import androidx.navigation.NavController
-import android.Manifest
 import androidx.core.app.ActivityCompat
+import androidx.navigation.NavController
 
 data class ShoppingItem(
     val id: Int,
