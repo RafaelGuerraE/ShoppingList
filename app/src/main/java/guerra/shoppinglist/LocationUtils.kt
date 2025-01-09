@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.os.Looper
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
@@ -33,7 +32,6 @@ class LocationUtils(val context: Context) {
                             latitude = lastLocation.latitude,
                             longitude = lastLocation.longitude)
                     viewModel.updateLocation(location, LocationUtils(context))
-                    Toast.makeText(context, "Location Updated", Toast.LENGTH_SHORT).show()
                 }
             }
         }

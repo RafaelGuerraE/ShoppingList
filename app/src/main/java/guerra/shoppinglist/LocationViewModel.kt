@@ -1,6 +1,6 @@
 package guerra.shoppinglist
 
-import android.location.Location
+import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -13,15 +13,29 @@ class LocationViewModel: ViewModel() {
     private val _location = mutableStateOf<LocationData?>(null)
     val location : State<LocationData?> = _location
 
-    private val _address = mutableStateOf("Fetching address...")
-    val address: State<String> = _address
+    private val _address = mutableStateOf(listOf<GeocodingResult>())
+    val address: State<List<GeocodingResult>> = _address
 
     fun updateLocation(newLocation: LocationData, locationUtils: LocationUtils){
         _location.value = newLocation
+    }
 
-        viewModelScope.launch(Dispatchers.IO){
-            val address = locationUtils.reverseGeocodeLocation(newLocation)
-            _address.value = address
+    fun fetchAddress(latLng: String){
+        try {
+            viewModelScope.launch{
+                val result = RetrofitClient.create().getAddressFromCoordinates(
+                    latLng,
+                    "AIzaSyCPcRhWIhjrocWDePHF0EPLkv5ahY501cU"
+                )
+
+                _address.value = result.results
+
+                Log.d("Res1", "Result: $result")
+                Log.d("Res1", "LatLng: $latLng")
+            }
+        }
+        catch(e: Exception){
+            Log.d("Res1", "${e.cause} ${e.message}")
         }
     }
 

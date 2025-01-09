@@ -90,8 +90,6 @@ fun ShoppingListApp(
             }
         } )
 
-    val context = LocalContext.current
-
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center
@@ -120,6 +118,7 @@ fun ShoppingListApp(
                         editedItem?.let {
                             it.name = editedName
                             it.quantity = editedQuantity
+                            it.address = address
                         }
                     })
                 } else {
@@ -153,8 +152,9 @@ fun ShoppingListApp(
                         if (itemName.isNotBlank()) {
                             val newItem = ShoppingItem(
                                 id = itemsList.size + 1,
-                                itemName,
-                                itemQuantity.toInt()
+                                name = itemName,
+                                quantity = itemQuantity.toInt(),
+                                address = address
                             )
 
                             itemsList += newItem

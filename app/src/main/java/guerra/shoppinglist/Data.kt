@@ -6,6 +6,7 @@ data class LocationData(
 )
 
 data class GeocodingResponse(
+    val error_message: String,
     val results: List<GeocodingResult>,
     val status: String
 )
